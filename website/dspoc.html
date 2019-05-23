@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>SANObacteria Project - About Us</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/met.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo">SANObacteria Project</a>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="index.html#header">Home</a></li>
+                <li><a href="WQI.html">WQI</a></li>
+                <li><a href="HAB.html">Algal Bloom Forecasting</a></li>
+                <li class="active"><a href="dspoc.html">Data Scraping Proof of Concept</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+
+            <h2>Data Scraping Proof of Concept</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sem nibh, placerat tristique felis
+                ut, lacinia accumsan ligula.
+                Aliquam erat volutpat. Donec efficitur consequat lectus in dignissim. Nulla maximus semper enim, auctor
+                suscipit sem molestie nec.
+                Donec arcu augue, tincidunt et lorem ut, hendrerit maximus tellus. Mauris nec massa tortor. In hac
+                habitasse platea dictumst.
+                Nunc porttitor accumsan mi. Morbi eget sapien scelerisque, pharetra dui sed, bibendum erat.
+                Cras mi leo, sodales quis elit ac, facilisis tempus turpis. Donec vitae facilisis sapien.
+                Fusce erat enim, pellentesque id quam id, consectetur pellentesque lacus.
+            </p>
+            <h2 id="curr-time">Current Met Station Data at </h2>
+            <div class="met-station">
+                <h3>Clear Lake Oaks</h3>
+                <div id="met-clo-temp"></div>
+                <div id="met-clo-hum"></div>
+                <div id="met-clo-wind"></div>
+            </div>
+            <div class="met-station">
+                <h3>Big Valley Rancheria</h3>
+                <div id="met-bvr-temp"></div>
+                <div id="met-bvr-hum"></div>
+                <div id="met-bvr-wind"></div>
+            </div>
+            <div class="met-station">
+                <h3>Buckingham Point</h3>
+                <div id="met-bp-temp"></div>
+                <div id="met-bp-hum"></div>
+                <div id="met-bp-wind"></div>
+            </div>
+            <div class="met-station">
+                <h3>Jago Bay</h3>
+                <div id="met-jb-temp"></div>
+                <div id="met-jb-hum"></div>
+                <div id="met-jb-wind"></div>
+            </div>
+            <div class="met-station">
+                <h3>Konocti Bay</h3>
+                <div id="met-kb-temp"></div>
+                <div id="met-kb-hum"></div>
+                <div id="met-kb-wind"></div>
+            </div>
+            <div class="met-station">
+                <h3>North Lakeport</h3>
+                <div id="met-nl-temp"></div>
+                <div id="met-nl-hum"></div>
+                <div id="met-nl-wind"></div>
+            </div>
+            <div class="met-station">
+                <h3>Nice</h3>
+                <div id="met-n-temp"></div>
+                <div id="met-n-hum"></div>
+                <div id="met-n-wind"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <!-- Footer -->
+        <footer id="footer">
+
+            <section class="contact">
+                <section>
+                    <h3>Contact Us</h3>
+                    <p><a href="mailto:saputty@ucdavis.edu">Scott Putty</a></p>
+                    <p><a href="mailto:ardigirolamo@ucdavis.edu">Alyssa DiGirolamo</a></p>
+                    <p><a href="mailto:nsosorio@ucdavis.edu">Nicole Osorio</a></p>
+                    <p><a href="mailto:ohalexander@ucdavis.edu">Olivia Alexander</a></p>
+                </section>
+            </section>
+        </footer>
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        var stations = {
+            clo: "bd25ca95bfcf4df8914e0b3af2171966",
+            bvr: "05766e2bf8314ffe9d604c52f2a820c6",
+            bp: "e72328caae3d4e349db6b91d22ac0808",
+            jb: "00393411a6504572b21d784ce155a93d",
+            kb: "b588a98fce32434286e1d56b727b3608",
+            nl: "dee3963455974382828932ae5862b021",
+            n: "16fb61e9c4ce4ed4beea5ce9a2b6d9b5"
+        }
+        var cors = "https://cors-anywhere.herokuapp.com/"
+        var d = new Date();
+        document.getElementById("curr-time").innerHTML = "Current Met Station Data at " + (d.getHours() > 12 ? d.getHours() - 12 : d.getHours()) + ":" + (d.getMinutes() < 10 ? "0" : "") + d.getMinutes() + " " + (d.getHours() > 12 ? "PM" : "AM");
+        Object.keys(stations).forEach(station => {
+            fetch(`${cors}https://www.weatherlink.com/embeddablePage/getData/${stations[station]}`)
+            .then(res => res.json())
+            .then(data => {
+                var temperature = Math.round((data.temperature - 32)*(5/9))
+                document.getElementById(`met-${station}-temp`).innerHTML = `Temperature: ${temperature} °C, `
+                if (temperature < 16) {
+                    document.getElementById(`met-${station}-temp`).innerHTML += `<strong class="met-temp-cold">Cold</strong>`
+                }
+                else if (temperature >= 16 && temperature < 24) {
+                    document.getElementById(`met-${station}-temp`).innerHTML += `<strong class="met-temp-cool">Cool</strong>`
+                }
+                else if (temperature >= 24 && temperature < 32) {
+                    document.getElementById(`met-${station}-temp`).innerHTML += `<strong class="met-temp-warm">Warm</strong>`
+                }
+                else if (temperature >= 32) {
+                    document.getElementById(`met-${station}-temp`).innerHTML += `<strong class="met-temp-hot">Hot</strong>`
+                }
+
+                var humidity = data.humidity
+                document.getElementById(`met-${station}-hum`).innerHTML = `Humidity: ${humidity}%, ` 
+                if (humidity < 50) {
+                    document.getElementById(`met-${station}-hum`).innerHTML += `<strong class="met-hum-dry">Dry</strong>`
+                }
+                else if (humidity >= 50) {
+                    document.getElementById(`met-${station}-hum`).innerHTML += `<strong class="met-hum-humid">Humid</strong>`
+                }
+
+                var wind = data.wind
+                document.getElementById(`met-${station}-wind`).innerHTML = `Wind: ${wind} mph, `
+                if (wind < 5) {
+                    document.getElementById(`met-${station}-wind`).innerHTML += `<strong class="met-wind-calm">Calm</strong>`
+                }
+                else if (wind >= 5 && wind < 15) {
+                    document.getElementById(`met-${station}-wind`).innerHTML += `<strong class="met-wind-breezy">Breezy</strong>`
+                }
+                else if (wind >= 15 && wind < 25) {
+                    document.getElementById(`met-${station}-wind`).innerHTML += `<strong class="met-wind-windy">Windy</strong>`
+                }
+                else if (wind >= 25) {
+                    document.getElementById(`met-${station}-wind`).innerHTML += `<strong class="met-wind-gusty">Gusty</strong>`
+                }
+            })
+        })
+    </script>
+
+</body>
+
+</html>
