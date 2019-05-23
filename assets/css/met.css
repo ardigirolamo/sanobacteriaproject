@@ -1,0 +1,23 @@
+#main > .met-station {
+    border: 1px solid black;
+    width: 50%;
+    margin-left: 64px;
+    margin-bottom: 10px;
+    padding-bottom: 64px;
+}
+
+.met-temp-cold, .met-hum-dry, .met-wind-calm {
+    color: blue
+}
+
+.met-temp-cool, .met-wind-breezy {
+    color: deepskyblue
+}
+
+.met-temp-warm, .met-wind-windy {
+    color: tomato
+}
+
+.met-temp-hot, .met-hum-humid, .met-wind-gusty {
+    color: red
+}
