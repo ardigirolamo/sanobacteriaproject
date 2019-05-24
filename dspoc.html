@@ -144,7 +144,7 @@
         "July", "August", "September", "October", "November", "December"];
         var cors = "https://cors-anywhere.herokuapp.com/"
         var d = new Date();
-        document.getElementById("curr-time").innerHTML = `Current Met Station Data as of ${monthNames[d.getMonth()]} ${d.getDay()}, ${(d.getHours() > 12 ? d.getHours() - 12 : d.getHours())}:${(d.getMinutes() < 10 ? "0" : "")}${d.getMinutes()} ${(d.getHours() > 12 ? "PM" : "AM")}`;
+        document.getElementById("curr-time").innerHTML = `Current Met Station Data as of ${monthNames[d.getMonth()]} ${d.getDate()}, ${(d.getHours() > 12 ? d.getHours() - 12 : d.getHours())}:${(d.getMinutes() < 10 ? "0" : "")}${d.getMinutes()} ${(d.getHours() > 12 ? "PM" : "AM")}`;
         Object.keys(stations).forEach(station => {
             fetch(`${cors}https://www.weatherlink.com/embeddablePage/getData/${stations[station]}`)
             .then(res => res.json())
