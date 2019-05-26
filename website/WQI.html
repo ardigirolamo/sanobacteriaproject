@@ -49,6 +49,20 @@
 								<span class="image left"><img src="images/HAB2.png" style="max-width:100%;"></span><span class="image center"><img src="images/WQI2.png" style="max-width:100%;"></span>
 								</br>
 							</section>
+							<div id="wqi-calc">
+								<h2>WQI Calculator</h2>
+								<form id="wqi-form">
+									pH: <input type="text" name="ph"><br>
+									Water temperature (Celsius): <input type="text" name="water-temp"><br>
+									Dissolved Oxygen (mg/L): <input type="text" name="do"><br>
+									Chlorophyll-a (ug/L): <input type="text" name="ca"><br>
+									Total dissolved solids (mg/L): <input type="text" name="tds"><br>
+									Median level of chlorophyll-a from SFEI: <input type="text" name="sfei"><br>
+									<input type="button" onclick="calcWQI()" value="Calculate WQI">
+									<div id="calculated-wqi"></div>
+								</form>
+
+							</div>
 
 					</div>
 
@@ -80,6 +94,137 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function calcWQI() {
+					var form = document.getElementById("wqi-form");
+					var ph = parseFloat(form.elements["ph"].value);
+					var temp = parseFloat(form.elements["water-temp"].value);
+					var diso = parseFloat(form.elements["do"].value);
+					var ca = parseFloat(form.elements["ca"].value);
+					var tds = parseFloat(form.elements["tds"].value);
+					var sfei = parseFloat(form.elements["sfei"].value);
+					var p, t, d, c, s, f;
 
+					/*
+					if x<7
+						p = 0;
+					elseif (x>=7) && (x<8)
+						p = (x-7)*133;
+					elseif (x>=8) && (x<9)
+						p = 133+(x-8)*133;
+					elseif (x>=9) && (x<10)
+						p = 267+(x-9)*133;
+					elseif x>10
+						p = 400;
+					end
+					*/
+					if (ph < 7) p = 0;
+					else if (ph >= 7 && ph < 8) p = (ph-7)*133;
+					else if (ph >= 8 && ph < 9) p = 133+(ph-8)*133;
+					else if (ph >= 9 && ph < 10) p = 267+(ph-9)*133;
+					else if (ph >= 10) p = 400;
+
+					/*
+					if x1<18
+						T = 0;
+					elseif (x1>=18) && (x1<22)
+						T = (x1-18)*41.75;
+					elseif (x1>=22) && (x1<26)
+						T = 167+(x1-22)*41.75;
+					elseif (x1>=26) && (x1<30)
+						T = 333+(x1-26)*41.75;
+					elseif x1>30
+						T = 500;
+					end
+					*/
+
+					if (temp < 18) t = 0;
+					else if (temp >= 18 && temp < 22) t = (temp-18)*41.75;
+					else if (temp >= 22 && temp < 26) t = 167+(temp-22)*41.75;
+					else if (temp >= 26 && temp < 30) t = 333+(temp-26)*41.75;
+					else if (temp >= 30) t = 500;
+
+					/*
+					if x2<4
+						D = 0;
+					elseif (x2>=4) && (x2<6)
+						D = (x2-4)*167/2;
+					elseif (x2>=6) && (x2<8)
+						D = 167+(x2-6)*167/2;
+					elseif (x2>=8) && (x2<10)
+						D = 333+(x2-8)*167/2;
+					elseif x2>10
+						D = 500;
+					end
+					*/
+					if (diso < 4) d = 0;
+					else if (diso >= 4 && diso < 6) d = (diso-4)*167/2;
+					else if (diso >= 6 && diso < 8) d = 167+(diso-6)*167/2;
+					else if (diso >= 8 && diso < 10) d = 333+(diso-8)*167/2;
+					else if (diso >= 10) d = 500;
+
+					/*
+					if x3<0
+						C = 0;
+					elseif (x3>=0) && (x3<10)
+						C = (x3-0)*6.7;
+					elseif (x3>=10) && (x3<30)
+						C = 67+(x3-10)*3.35;
+					elseif (x3>=30) && (x3<50)
+						C = 133+(x3-30)*3.35;
+					elseif x3>10
+						C = 200;
+					end
+					*/
+					if (ca < 0) c = 0;
+					else if (ca >= 0 && ca < 10) c = ca*6.7;
+					else if (ca >= 10 && ca < 30) c = 67+(ca-10)*3.35;
+					else if (ca >= 30 && ca < 50) c = 133+(ca-30)*3.35;
+					else if (ca >= 50) c = 200;
+
+					/*
+					if x4<180
+						S = 0;
+					elseif (x4>=180) && (x4<200)
+						S = (x4-180)*33/20;
+					elseif (x4>=200) && (x4<220)
+						S = 33+(x4-200)*33/20;
+					elseif (x4>=220) && (x4<240)
+						S = 67+(x4-220)*33/20;
+					elseif x4>10
+						S = 100;
+					end
+					*/
+					if (tds < 180) s = 0;
+					else if (tds >= 180 && tds < 200) s = (tds-180)*33/20;
+					else if (tds >= 200 && tds < 220) s = 33+(tds-200)*33/20;
+					else if (tds >= 220 && tds < 240) s = 67+(tds-220)*33/20;
+					else if (tds >= 240) s = 100;
+
+					/*
+					if x5<2.04
+						F = 0;
+					elseif (x5>=2.04) && (x5<10)
+						F = (x5-2.04)*8.417;
+					elseif (x5>=10) && (x5<100)
+						F = 67+(x5-10)*0.74;
+					elseif (x5>=100) && (x5<200)
+						F = 133+(x5-100)*0.67;
+					elseif x5>10
+						F = 200;
+					end
+					*/
+					if (sfei < 2.04) f = 0;
+					else if (sfei >= 2.04 && sfei < 10) f = (sfei-2.04)*8.417;
+					else if (sfei >= 10 && sfei < 100) f = 67+(sfei-10)*0.74;
+					else if (sfei >= 100 && sfei < 200) f = 133+(sfei-100)*0.67;
+					else if (sfei >= 200) f = 200;
+
+					var wqi_in = p+t+d+c+s+f;
+					var wqi_out = wqi_in/6.3333333333333;
+					document.getElementById("calculated-wqi").innerHTML = `The resulting WQI under these conditions is ${Math.trunc(wqi_out)}.`;
+					form.reset();
+				}
+			</script>
 	</body>
 </html>
