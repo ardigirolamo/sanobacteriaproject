@@ -222,7 +222,13 @@
 
 					var wqi_in = p+t+d+c+s+f;
 					var wqi_out = wqi_in/6.3333333333333;
-					document.getElementById("calculated-wqi").innerHTML = `The resulting WQI under these conditions is ${Math.trunc(wqi_out)}.`;
+					
+					if (wqi_out < 100) r = 'low';
+					else if (wqi_out >= 100 && wqi_out < 200) r = 'moderate';
+					else if (wqi_out >= 200) r = 'high';	
+					var risk = r
+					
+					document.getElementById("calculated-wqi").innerHTML = `The resulting WQI under these conditions is ${Math.trunc(wqi_out)}, which indicates a ${Math.trunc(risk)} risk of an algal bloom event`;
 					form.reset();
 				}
 			</script>
