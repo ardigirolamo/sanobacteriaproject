@@ -229,7 +229,7 @@
 					else if (wqi_out >= 200) r = 'high';	
 					var risk = r;
 					
-					document.getElementById("calculated-wqi").innerHTML = `The resulting WQI under these conditions is ${Math.trunc(wqi_out)}, which indicates a ${Math.trunc(risk)} risk of an algal bloom event.`;
+					document.getElementById("calculated-wqi").innerHTML = `The resulting WQI under these conditions is ${Math.trunc(wqi_out)}, which indicates a ${risk} risk of an algal bloom event.`;
 					form.reset();
 				}
 			</script>
