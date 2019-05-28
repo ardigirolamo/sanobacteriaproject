@@ -40,19 +40,17 @@
         <div id="main">
 
             <h2>Data Scraping Proof of Concept</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sem nibh, placerat tristique felis
-                ut, lacinia accumsan ligula.
-                Aliquam erat volutpat. Donec efficitur consequat lectus in dignissim. Nulla maximus semper enim, auctor
-                suscipit sem molestie nec.
-                Donec arcu augue, tincidunt et lorem ut, hendrerit maximus tellus. Mauris nec massa tortor. In hac
-                habitasse platea dictumst.
-                Nunc porttitor accumsan mi. Morbi eget sapien scelerisque, pharetra dui sed, bibendum erat.
-                Cras mi leo, sodales quis elit ac, facilisis tempus turpis. Donec vitae facilisis sapien.
-                Fusce erat enim, pellentesque id quam id, consectetur pellentesque lacus.
-	    </p>
+            <section class="post">
+		    <p>
+		    	The code in this page scrapes information from the seven Met Stations installed around the perimeter of Clear Lake in March, 2019. Our team’s code pulls the temperature, humidity, and wind speed from each location, relates them to the hazard index seen in the table below, and shows the results at the bottom of the page. The goal for this code is to update it with the hazard index on the WQI page and publish the results once our surface water sensor network is implemented.
+			<br>
+				<span class="image center"><img src="images/METindex.PNG" style="max-width:100%;"></span> 
+		    	</br>
+			The purpose of this code is to show that parameter values can be continuously updated and a hazard index can be used to give feedback on a result. In our proposed project, the sensor network would update our 6 parameters of interest, and the data scraping code could take each value, plug them into the WQI equation, and give the resulting WQI and meaning of the value for the public to see at each location of the sensor network.
+	  	    </p>
             	<h2>Met Station Locations</h2><span class="image center"><img src="images/MET.png" style="max-width:100%;"></span> 
-            <h2 id="curr-time">Current Met Station Data at </h2>
+	    </section>
+	    <h2 id="curr-time">Current Met Station Data at </h2>
             <div class="met-station">
                 <h3>Clear Lake Oaks</h3>
                 <div id="met-clo-temp"></div>
